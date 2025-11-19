@@ -665,15 +665,22 @@
 		<!-- jQuery active JS -->
 		<script src="js/main.js"></script>
 		<script src="carrito.js"></script>
-        <!-- Mejora responsive: añadir lazy loading y clase de utilidad a imágenes -->
-        <script>
-          document.addEventListener('DOMContentLoaded', function(){
-            document.querySelectorAll('img').forEach(function(img){
-              if(!img.classList.contains('responsive-img')) img.classList.add('responsive-img');
-              if(!img.loading) img.loading = 'lazy';
-            });
-          });
-        </script>
+                <!-- Mejora responsive: añadir lazy loading y clase de utilidad a imágenes
+                         y cambiar el texto del botón de precio por 'Comprar' -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function(){
+                        // Añadir utilidades a las imágenes
+                        document.querySelectorAll('img').forEach(function(img){
+                            if(!img.classList.contains('responsive-img')) img.classList.add('responsive-img');
+                            if(!img.loading) img.loading = 'lazy';
+                        });
+
+                        // Reemplazar todos los textos de .project-weight h3 por 'Comprar'
+                        document.querySelectorAll('.project-weight h3').forEach(function(h){
+                            h.textContent = 'Comprar';
+                        });
+                    });
+                </script>
 		
 		
 		
