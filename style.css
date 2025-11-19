@@ -508,6 +508,34 @@ h2.content-title::before {
 }
 
 
+/* WhatsApp contact link styles */
+.farm-contact-section .contact-content a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.farm-contact-section .contact-content a .fa-whatsapp {
+    color: #25D366;
+    font-size: 22px;
+}
+
+/* Hover: icono WhatsApp más oscuro y ligera animación */
+.farm-contact-section .contact-content a .fa-whatsapp {
+    transition: color .18s ease, transform .12s ease;
+}
+.farm-contact-section .contact-content a:hover {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.95;
+}
+.farm-contact-section .contact-content a:hover .fa-whatsapp {
+    color: #1AA34A; /* tono más oscuro al pasar el cursor */
+    transform: translateY(-1px) scale(1.05);
+}
+
+
 .project-img {
     background: #f1f0f0;
     box-shadow: 7px 7px 1px #454545;
@@ -932,6 +960,11 @@ select.porpose-select option {
     text-align: center;
     width: 60px;
     font-size: 24px;
+}
+
+/* Color de los iconos dentro de la sección de contacto (mapa/teléfono) */
+.farm-contact-section .contact-icon .fa {
+    color: #25D366; /* verde coincidiente con WhatsApp */
 }
 .single-contact:hover p {
     color: #ff4301;
@@ -1607,4 +1640,64 @@ img {
         padding: 10px 8px !important;
     }
 }
+
+/* Mantener estilos originales del autor para la sección "Sobre nosotros".
+   Revertido: no forzar tamaño ni alineación aquí para preservar la apariencia previa. */
+
+/* Excepción: conservar exactamente el tamaño y alineación original de la imagen secundaria
+    en 'Sobre nosotros' incluso si la utilidad .responsive-img se aplica vía JS. */
+.farm-about-img img.keep-original {
+    width: auto !important;
+    height: auto !important;
+    max-width: 420px !important; /* ajustable: mantiene la imagen a un tamaño razonable */
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+/* Desktop: alinear la imagen a la derecha y centrarla verticalmente con el texto */
+@media (min-width: 768px) {
+    .farm-about-us .row {
+        align-items: center; /* centra verticalmente columna texto + imagen */
+    }
+    .farm-about-img {
+        display: flex;
+        justify-content: flex-end; /* colocar la imagen al borde derecho de su columna */
+        align-items: center;
+    }
+    .farm-about-img img.keep-original {
+        max-width: 420px !important;
+        display: inline-block !important;
+    }
+}
+
+/* (Removed column-swap rules to restore original layout: image on the right) */
+
+/* Garantizar columnas lado a lado en escritorio y alinear la imagen a la derecha */
+@media (min-width: 768px) {
+    .farm-about-us .container > .row {
+        display: flex !important;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    .farm-about-us .col-md-6 {
+        float: none !important;
+        width: 50% !important;
+        box-sizing: border-box;
+    }
+    .farm-about-us .col-md-6:first-child {
+        padding-right: 40px; /* separación del texto respecto a la imagen */
+    }
+    .farm-about-img {
+        text-align: right !important;
+        display: block !important;
+    }
+    .farm-about-img img.keep-original {
+        display: inline-block !important;
+        margin: 0 !important;
+        max-width: 480px !important; /* aumenta un poco para coincidir con la captura */
+        height: auto !important;
+    }
+}
+
+
 
