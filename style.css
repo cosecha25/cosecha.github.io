@@ -1417,7 +1417,7 @@ select.porpose-select option {
 .farm-project-active {
   display: grid;
   /* Espacio de 20px entre los productos, ¡esto evitará que se peguen! */
-  gap: 2px; 
+  gap: 20px; 
   
   /* Esto hace que sea responsivo:
      - auto-fit: Crea tantas columnas como quepan.
@@ -1427,7 +1427,8 @@ select.porpose-select option {
   
   /* Puedes añadir un padding general al contenedor de la galería si quieres 
      que los productos no toquen los bordes de la pantalla. */
-  padding: 15px; /* Ejemplo */
+  padding: 20px; /* Ejemplo */
+ 
 }
 
 .farm-single-project {
