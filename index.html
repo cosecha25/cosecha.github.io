@@ -212,6 +212,8 @@
 				</div>
 			</div>
 		</section><!-- prices area end -->
+
+        
 		<!-- portfolio area start -->
 		<section id="gallery" class="farm-portfolio-section">
             
@@ -231,13 +233,13 @@
 
             <div class="farm-single-project vegetables"
                 data-product-id="prod-papas-001"
-                data-product-name="Papas"
+                data-product-name="Limones"
                 data-product-price="4.99">
                 <div class="project-img">
-                    <img src="IMAGENES/papas.jpg" alt="theiran.com">
+                    <img src="IMAGENES/limon.png" alt="theiran.com">
                     <div class="project-weight"><h3>Comprar</h3></div>
                 </div>
-                <h4 class="product-name">Papas</h4>
+                <h4 class="product-name">Limones</h4>
             </div>
 
             <div class="farm-single-project vegetables"
@@ -330,13 +332,13 @@
 
             <div class="farm-single-project vegetables"
                 data-product-id="prod-limonv-010"
-                data-product-name="Limones Verdes"
+                data-product-name="Papas"
                 data-product-price="4.99">
                 <div class="project-img">
-                    <img src="IMAGENES/limon.png" alt="theiran.com">
+                    <img src="IMAGENES/papaas.png" alt="theiran.com">
                     <div class="project-weight"><h3>$4.99 / kg</h3></div>
                 </div>
-                <h4 class="product-name">Limones Verdes</h4>
+                <h4 class="product-name">Papas</h4>
             </div>
 
             <div class="farm-single-project vegetables"
@@ -656,6 +658,15 @@
 		<!-- jQuery active JS -->
 		<script src="js/main.js"></script>
 		<script src="carrito.js"></script>
+        <!-- Mejora responsive: añadir lazy loading y clase de utilidad a imágenes -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('img').forEach(function(img){
+              if(!img.classList.contains('responsive-img')) img.classList.add('responsive-img');
+              if(!img.loading) img.loading = 'lazy';
+            });
+          });
+        </script>
 		
 		
 		

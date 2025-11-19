@@ -459,7 +459,7 @@ h2.content-title::before {
     background-position: center center;
     background-attachment: fixed;
     padding-top: 150px;
-    padding-bottom: 110px;
+    padding-bottom: 40px; /* reducido para menos espacio debajo de la galería */
 }
 .farm-portfolio-section .farm-section-title {
     margin-bottom: 35px;
@@ -496,13 +496,14 @@ h2.content-title::before {
     cursor: pointer;
 }
 .farm-single-project {
-    float: left;
+    /* Usar layout por Grid: quitar floats/anchos antiguos */
+    float: none;
+    width: auto;
+    box-sizing: border-box;
     height: 320px;
     line-height: 260px;
-    margin: 1%;
-    margin-bottom: 40px; /* 👈 Espacio extra debajo */
+    margin: 0 0 40px 0; /* el gap del grid controla separación horizontal */
     text-align: center;
-    width: 23%;
     cursor: pointer;
 }
 
@@ -1415,9 +1416,9 @@ select.porpose-select option {
 
   /* responsive */
 .farm-project-active {
-  display: grid;
-  /* Espacio de 20px entre los productos, ¡esto evitará que se peguen! */
-  gap: 20px; 
+    display: grid;
+    /* Espacio reducido entre productos */
+    gap: 12px; 
   
   /* Esto hace que sea responsivo:
      - auto-fit: Crea tantas columnas como quepan.
@@ -1427,23 +1428,25 @@ select.porpose-select option {
   
   /* Puedes añadir un padding general al contenedor de la galería si quieres 
      que los productos no toquen los bordes de la pantalla. */
-  padding: 20px; /* Ejemplo */
+    padding: 12px; /* menos padding para reducir separación vertical */
+  
  
 }
 
 .farm-single-project {
-  /* ¡Importante! Elimina cualquier "float: left;" o "width: X%" si lo tienes aquí.
-     CSS Grid manejará el ancho automáticamente. */
-  /* Si tienes un ancho fijo definido, quítalo. Ej: width: 300px; */
+        /* Anulamos floats/anchos antiguos para que CSS Grid funcione correctamente */
+        float: none;
+        width: auto;
 
-  /* Asegura que el contenido interno se centre si es necesario */
-  text-align: center;
+    /* Asegura que el contenido interno se centre si es necesario */
+    text-align: center;
   
-  /* Si los productos tienen un fondo blanco y un borde, puedes definirlo aquí */
-  background-color: #fff;
-  border-radius: 5px; /* Bordes redondeados, si te gusta */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para destacar el producto */
-  overflow: hidden; /* Asegura que la imagen no se desborde si tiene bordes */
+    /* Si los productos tienen un fondo blanco y un borde, puedes definirlo aquí */
+    background-color: #fff;
+    border-radius: 5px; /* Bordes redondeados, si te gusta */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para destacar el producto */
+    overflow: hidden; /* Asegura que la imagen no se desborde si tiene bordes */
+    margin-bottom: 0; /* dejar que el gap del grid controle el espacio vertical */
 }
 .farm-single-project .project-img {
   width: 100%; /* Asegura que ocupe todo el ancho de su contenedor de producto */
@@ -1475,9 +1478,133 @@ select.porpose-select option {
   color: #333;
 }
 
-@media (max-width: 600px) {
+/* Forzar 4 columnas en pantallas grandes (escritorio) */
+@media (min-width: 992px) {
     .farm-project-active {
-        /* Centra el contenido (las tarjetas) horizontalmente dentro del grid */
-        justify-content: center; 
+        grid-template-columns: repeat(4, 1fr) !important;
     }
 }
+
+/* Si Isotope está activo, éste aplica position:absolute a los items.
+     Anulamos esas reglas para que el Grid funcione correctamente. */
+.farm-project-active.isotope,
+.farm-project-active {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+}
+.farm-project-active .isotope-item,
+.farm-project-active .farm-single-project {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
+/* Asegurar que los hijos ocupen todo el ancho de su celda */
+.farm-project-active > .farm-single-project {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================= */
+/* Reglas de imágenes responsive */
+/* ========================= */
+/* Todas las imágenes se ajustan al contenedor sin desbordar */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Clase utilitaria para imágenes que deben cubrir su contenedor */
+.responsive-img,
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene recorte centrado */
+    display: block;
+}
+
+/* Ajustes específicos para galerías/productos y sliders */
+.farm-single-product img,
+.farm-single-project .project-img img,
+.farm-single-sponsor img,
+.farm-home-slider .farm-slider-item img,
+.app-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Si se quiere una versión contenida (no recortada) usar .responsive-img (height:auto) */
+.responsive-img { height: auto; object-fit: unset; }
+
+/* Mejora para imágenes de fondo: asegurar que cubran y estén centradas */
+.bg-cover {
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Pequeños ajustes móviles: evitar que imágenes muy altas consuman demasiado espacio */
+@media (max-width: 480px) {
+    .farm-single-product,
+    .farm-single-project .project-img {
+        height: auto; /* permitir altura variable en móviles */
+    }
+    .farm-single-project .project-img {
+        min-height: 160px; /* asegurar un tamaño razonable */
+    }
+}
+
+/* Ajustes específicos para móviles: una columna clara y menos altura */
+@media (max-width: 767px) {
+    .farm-project-active {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+
+    .farm-single-project {
+        height: auto !important;
+        line-height: normal !important;
+        margin-bottom: 8px !important;
+        display: block;
+    }
+
+    .farm-single-project .project-img {
+        height: auto !important;
+        min-height: 160px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .farm-single-project .project-img img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    .farm-single-project .project-weight {
+        bottom: 8px !important;
+        right: 8px !important;
+        font-size: 0.95rem !important;
+        padding: 6px 10px !important;
+        background-color: rgba(100,201,23,0.5) !important; /* más transparente */
+        z-index: 3 !important;
+    }
+
+    .farm-single-project .product-name {
+        font-size: 1.05rem !important;
+        padding: 10px 8px !important;
+    }
+}
+
