@@ -387,13 +387,13 @@ h2.content-title::before {
 
 /* prices area start */
 .farm-pricing-list{
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 .table-heading {
   background: #333333 none repeat scroll 0 0;
   color: #fff;
-  font-size: 18px;
+    font-size: 18px;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -409,6 +409,33 @@ h2.content-title::before {
 .farm-pricing-table table {
     width: 100%;
     border: 2px solid #f7f7f7
+}
+
+/* Mejorar presentación de la tabla de precios: permitir textos largos en la columna NOMBRE */
+.farm-pricing-table table {
+    table-layout: auto; /* permitir que las columnas se ajusten al contenido (mostrar precios completos) */
+    width: 100%;
+}
+.farm-pricing-table th,
+.farm-pricing-table td {
+    word-wrap: break-word;
+    white-space: normal; /* permitir salto de línea */
+    vertical-align: middle;
+}
+.farm-pricing-table th:nth-child(1),
+.farm-pricing-table td:nth-child(1) {
+    /* columna NOMBRE más ancha */
+    width: 68%;
+}
+.farm-pricing-table th:nth-child(2),
+.farm-pricing-table td:nth-child(2) {
+    width: 20%;
+    text-align: left;
+}
+.farm-pricing-table th:nth-child(3),
+.farm-pricing-table td:nth-child(3) {
+    width: 12%;
+    text-align: left;
 }
 .farm-pricing-table td {
     padding:13px 16px;
@@ -434,6 +461,46 @@ h2.content-title::before {
 }
 .farm-pricing-table tr td:last-child {
     color: #8f8f8f;
+}
+
+/* Compact table: smaller font, tighter padding and thin separators */
+.farm-pricing-table th,
+.farm-pricing-table td {
+    font-size: 13px; /* más compacto */
+    line-height: 1.2;
+}
+.farm-pricing-table td:nth-child(2),
+.farm-pricing-table td:nth-child(3),
+.farm-pricing-table th:nth-child(2),
+.farm-pricing-table th:nth-child(3) {
+    white-space: nowrap; /* mantener precio en una sola línea */
+    word-break: normal; /* evitar cortes por carácter */
+    overflow: visible; /* mostrar precio completo */
+    text-overflow: clip;
+    text-align: right;
+    padding-right: 12px;
+}
+
+/* Proporciones de columnas para dar más espacio a la columna de precio */
+.farm-pricing-table col:nth-child(1) { width: 65%; }
+.farm-pricing-table col:nth-child(2) { width: 25%; }
+.farm-pricing-table col:nth-child(3) { width: 10%; }
+.farm-pricing-table td {
+    padding: 6px 10px; /* menos padding para filas más juntas */
+}
+.farm-pricing-table th {
+    padding: 8px 10px; /* encabezado más compacto */
+}
+.farm-pricing-table table {
+    border-collapse: collapse;
+}
+
+/* filas: separador fino */
+.farm-pricing-table tbody tr {
+    border-bottom: 1px solid #f0f0f0; /* línea más fina */
+}
+.farm-pricing-table tbody tr:last-child{
+    border-bottom:none;
 }
 .farm-price-content h2 {
     margin-top:15px;
