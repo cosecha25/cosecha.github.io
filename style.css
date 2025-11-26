@@ -1768,3 +1768,16 @@ img {
 
 
 
+/* === SOLUCIÓN DE CHOQUE: AUMENTAR ESPACIO DEBAJO DE LA GALERÍA === */
+.farm-portfolio-section {
+    /* Mantener estilos de fondo */
+    background-color: #333333;
+    background-image: url(img/product-gallery-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    padding-top: 200px;
+    
+    /* AUMENTO CRÍTICO: Usar un valor alto (e.g., 150px) para garantizar la separación */
+    padding-bottom: 300px; 
+}
