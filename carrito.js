@@ -120,7 +120,7 @@ function processOrder() {
     message += `TOTAL DEL PEDIDO: $${total.toFixed(2)}`;
     
     // Obtener el número de teléfono
-    const phoneNumber = "50769684299"; 
+    const phoneNumber = "50768976644"; // Reemplaza con el número real sin espacios ni símbolos
     
     // Codificar el mensaje y generar el enlace de WhatsApp
     const encodedMessage = encodeURIComponent(message);
