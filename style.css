@@ -1781,3 +1781,95 @@ img {
     /* AUMENTO CRÍTICO: Usar un valor alto (e.g., 150px) para garantizar la separación */
     padding-bottom: 300px; 
 }
+
+ /* Color del ícono instagram */
+./* Estilos generales del contenedor de contacto */
+.single-contact {
+    display: flex; /* Para alinear el ícono y el texto en una fila */
+    align-items: center; /* Centra verticalmente el ícono y el texto */
+    background-color: #333; /* Color de fondo oscuro como en la imagen */
+    padding: 15px 20px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espacio entre cada tarjeta de contacto */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    color: #fff; /* Color de texto blanco por defecto */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/* Estilos para los enlaces dentro de single-contact (si el div entero es clickeable) */
+.single-contact a {
+    text-decoration: none; /* Elimina el subrayado del enlace del ícono */
+    color: inherit; /* Hereda el color del texto del padre */
+}
+
+/* Estilo para el ícono circular */
+
+
+/* Asegúrate de que tu .contact-icon tenga estos estilos para el círculo blanco */
+.single-contact .contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff; /* Fondo blanco del círculo */
+    font-size: 24px; /* Tamaño del ícono */
+    margin-right: 15px; /* Espacio a la derecha */
+    flex-shrink: 0;
+}
+
+/* ESTILOS ESPECÍFICOS PARA EL ÍCONO DE INSTAGRAM */
+.single-contact .contact-icon .fa-instagram {
+    /* Define el degradado de colores de Instagram */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    
+    /* Hace que el fondo se recorte por la forma del ícono (texto) */
+    -webkit-background-clip: text; /* Para navegadores basados en WebKit (Chrome, Safari, Edge) */
+    background-clip: text; /* Estándar */
+    
+    /* Hace que el "texto" (el ícono) sea transparente para que el degradado se vea a través */
+    -webkit-text-fill-color: transparent; /* Para navegadores basados en WebKit */
+    color: transparent; /* Como fallback o para otros navegadores */
+}
+
+/* Opcional: Estilo para el enlace del nombre de usuario para que coincida */
+.single-contact .contact-content p a {
+    color: #e7e3df; /* Un rosa/rojo representativo para el texto */
+    text-decoration: none; /* Elimina el subrayado si lo hay */
+}
+/* Estilos del círculo (Reutiliza el código que ya tienes) */
+.single-contact .contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff; /* Fondo blanco para el círculo */
+    font-size: 24px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Color específico del ícono de Ubicación */
+.single-contact .contact-icon .fa-location-dot {
+    color: #25D366; /* Un color verde brillante, similar al de tu imagen. */
+}
+
+/* Estilo específico para el ícono de WhatsApp dentro del contenedor contact-icon */
+.single-contact .contact-icon .fa-whatsapp {
+    color: #25D366; /* El color verde oficial de WhatsApp */
+}
+
+/* Opcional: Si quieres darle un fondo verde al círculo y el ícono blanco */
+/* Si el círculo es blanco, omite esta parte */
+/* Si el círculo es blanco, omite esta parte */
+/* Si quieres que el círculo sea verde, usa esto: */
+/*
+.single-contact .contact-icon {
+    background-color: #25D366;
+}
+.single-contact .contact-icon .fa-whatsapp {
+    color: #fff;
+}
+*/
